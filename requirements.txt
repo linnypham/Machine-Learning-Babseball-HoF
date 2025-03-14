@@ -1,3 +1,8 @@
 pybaseball
 scikit-learn
 pandas
+xgboost
+numpy
+sqlalchemy
+sqlite3
+jupyter
