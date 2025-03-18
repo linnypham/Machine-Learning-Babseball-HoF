@@ -1,0 +1,14 @@
+Position: Most of the time this is the position where the player spent the most innings. Because “outfielder” isn’t a position in the Hall of Fame, I separate out everyone by their actual fielding position. This causes some weirdness, like making Cody Bellinger a first baseman because he has more innings there than at any outfield position, but it works. For Hall of Fame inductees I consulted the official Hall of Fame website and, when specific outfield positioning wasn’t available, cooperstownexpert.com. I also discarded relief pitchers. Reliever induction is all over the map and the selection of Mariano Rivera has made things less clear than ever (or perhaps more clear? I’m not clear).
+
+Age: the age a player was when he accrued this WAR.
+
+Cumulative WAR at this age: the WAR accrued through each age in the dataset. For position players, I use FanGraphs WAR. For pitchers, I use an average of their FIP-based WAR and RA9-WAR. This approach blends the modern sabermetric style of evaluating pitchers and the more traditional runs-based style.
+
+Mean Year: the average of a player’s debut and final years. This data point encapsulates the era a player played in. As we’ll see later, this data point plays a large role in predicting induction.
+
+Scandal: I defined several types of scandals and marked players accordingly:
+- PEDs: your big names like Barry Bonds and Alex Rodriguez go here as well as folks like Dee Strange-Gordon and Starling Marte. I included Andy Pettitte and David Ortiz in this group. Remember Melky Cabrera’s fake website?
+- Gambling: the eight members of the 1919 Chicago White Sox who were banned, along with Joe Gedeon and Pete Rose.
+- Cheating: major members of the 2017 Astros go here, as well as Gaylord Perry.
+- Domestic violence: Marcell Ozuna, Aroldis Chapman, Omar Vizquel, etc.
+- Miscellaneous: Curt Schilling and Lenny Dykstra are in this group. These guys may not have committed any damning crimes or been punished within the game, but they’re viewed as less-than-savory characters for a variety of reasons.
