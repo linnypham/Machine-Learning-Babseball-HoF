@@ -4,7 +4,6 @@ pandas
 xgboost
 numpy
 sqlalchemy
-sqlite3
 jupyter
 matplotlib
 seaborn
