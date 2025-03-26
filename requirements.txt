@@ -2,6 +2,7 @@ pybaseball
 scikit-learn
 pandas
 xgboost
+lightgbm
 numpy
 sqlalchemy
 jupyter
