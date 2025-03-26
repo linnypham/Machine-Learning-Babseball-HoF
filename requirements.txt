@@ -7,3 +7,5 @@ sqlalchemy
 jupyter
 matplotlib
 seaborn
+imblearn
+numpy
