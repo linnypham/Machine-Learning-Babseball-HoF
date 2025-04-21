@@ -32,7 +32,7 @@ def plot_confusion_and_roc(y_test, y_pred, y_proba, title_prefix):
     plt.legend(loc="lower right")
 
     plt.tight_layout()
-    plt.savefig(f'{title_prefix}_lr.png')
+    plt.savefig(f'graphs/{title_prefix}_lr.png')
 # Load data
 batting = pd.read_csv('baseball-reference data/all_batting_updated.csv')
 pitching = pd.read_csv('baseball-reference data/all_pitching_updated.csv')
@@ -62,9 +62,9 @@ batting_features = batting.select_dtypes(include=['number']).drop(columns=['HOF'
 pitching_features = pitching.select_dtypes(include=['number']).drop(columns=['HOF']).fillna(0)
 
 #batting col=['AVG','OBP','SLG','OPS','WAR']
-batting_features = batting_features[['AVG','OBP','SLG','OPS','WAR']]
+batting_features = batting_features[['AVG','OBP','SLG','OPS','RBI']]
 #pitching col=['ERA','WHIP','K/9','FIP','WAR']
-pitching_features = pitching_features[['ERA','WHIP','K/9','FIP','WAR']]
+pitching_features = pitching_features[['ERA','WHIP','K/9','FIP','K/BB']]
 #y = HOF
 y_batting = batting['HOF']
 y_pitching = pitching['HOF']

@@ -2,7 +2,6 @@ import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
-import pickle
 from imblearn.over_sampling import SMOTE
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -32,7 +31,7 @@ def plot_confusion_and_roc(y_test, y_pred, y_proba, title_prefix):
     plt.legend(loc="lower right")
 
     plt.tight_layout()
-    plt.savefig(f'{title_prefix}_dt.png')
+    plt.savefig(f'graphs/{title_prefix}_dt.png')
 # Load data
 batting = pd.read_csv('baseball-reference data/all_batting_updated.csv')
 pitching = pd.read_csv('baseball-reference data/all_pitching_updated.csv')
@@ -62,9 +61,9 @@ batting_features = batting.select_dtypes(include=['number']).drop(columns=['HOF'
 pitching_features = pitching.select_dtypes(include=['number']).drop(columns=['HOF']).fillna(0)
 
 #batting col=['AVG','OBP','SLG','OPS','WAR']
-batting_features = batting_features[['AVG','OBP','SLG','OPS','WAR']]
+batting_features = batting_features[['AVG','OBP','SLG','OPS','RBI']]
 #pitching col=['ERA','WHIP','K/9','FIP','WAR']
-pitching_features = pitching_features[['ERA','WHIP','K/9','FIP','WAR']]
+pitching_features = pitching_features[['ERA','WHIP','K/9','FIP','K/BB']]
 #y = HOF
 y_batting = batting['HOF']
 y_pitching = pitching['HOF']
@@ -87,7 +86,7 @@ pitching_model.fit(X_resampled_p, y_resampled_p)
 # Predictions
 y_pred_b = batting_model.predict(X_test_b)
 y_pred_p = pitching_model.predict(X_test_p)
-=
+
 # Get prediction probabilities
 y_proba_b = batting_model.predict_proba(X_test_b)[:, 1]
 y_proba_p = pitching_model.predict_proba(X_test_p)[:, 1]

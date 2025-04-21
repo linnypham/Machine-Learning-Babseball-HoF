@@ -1,5 +1,5 @@
 import pandas as pd
-from sklearn.svm  import SVC
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
 import pickle
@@ -32,7 +32,7 @@ def plot_confusion_and_roc(y_test, y_pred, y_proba, title_prefix):
     plt.legend(loc="lower right")
 
     plt.tight_layout()
-    plt.savefig(f'{title_prefix}_svm.png')
+    plt.savefig(f'graphs/{title_prefix}_rf.png')
 # Load data
 batting = pd.read_csv('baseball-reference data/all_batting_updated.csv')
 pitching = pd.read_csv('baseball-reference data/all_pitching_updated.csv')
@@ -62,9 +62,9 @@ batting_features = batting.select_dtypes(include=['number']).drop(columns=['HOF'
 pitching_features = pitching.select_dtypes(include=['number']).drop(columns=['HOF']).fillna(0)
 
 #batting col=['AVG','OBP','SLG','OPS','WAR']
-batting_features = batting_features[['AVG','OBP','SLG','OPS','WAR']]
+batting_features = batting_features[['AVG','OBP','SLG','OPS','RBI']]
 #pitching col=['ERA','WHIP','K/9','FIP','WAR']
-pitching_features = pitching_features[['ERA','WHIP','K/9','FIP','WAR']]
+pitching_features = pitching_features[['ERA','WHIP','K/9','FIP','K/BB']]
 #y = HOF
 y_batting = batting['HOF']
 y_pitching = pitching['HOF']
@@ -73,9 +73,9 @@ y_pitching = pitching['HOF']
 X_train_b, X_test_b, y_train_b, y_test_b = train_test_split(batting_features, y_batting, test_size=0.2, random_state=42)
 X_train_p, X_test_p, y_train_p, y_test_p = train_test_split(pitching_features, y_pitching, test_size=0.2, random_state=42)
 
-# SVM
-batting_model = SVC(kernel='linear', probability=True,random_state=42)
-pitching_model = SVC(kernel='linear', probability=True,random_state=42)
+# Random Forest Models
+batting_model = RandomForestClassifier(n_estimators=100, random_state=42)
+pitching_model = RandomForestClassifier(n_estimators=100, random_state=42)
 
 #SMOTE and fitting
 sm = SMOTE(random_state=42)
