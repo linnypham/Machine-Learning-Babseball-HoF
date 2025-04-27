@@ -9,4 +9,4 @@ if first time, run decisionTree.py, logisticRegression.py, randomForest.py to ge
 # run
 run hof_gui.py to use model: (default using logistic regression model, can be changed in hof.py code)
 
-    input first and last name of player to predict
+input first and last name of player to predict
