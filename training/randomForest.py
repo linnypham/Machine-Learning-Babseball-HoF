@@ -6,6 +6,7 @@ from imblearn.over_sampling import SMOTE
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import confusion_matrix, roc_curve, auc
+import joblib
 #graph
 def plot_confusion_and_roc(y_test, y_pred, y_proba, title_prefix):
     # Confusion Matrix
@@ -92,7 +93,9 @@ y_pred_p = pitching_model.predict(X_test_p)
 # Get prediction probabilities
 y_proba_b = batting_model.predict_proba(X_test_b)[:, 1]
 y_proba_p = pitching_model.predict_proba(X_test_p)[:, 1]
-
+# Save models
+joblib.dump(batting_model, 'models/batting_model_rf.pkl')
+joblib.dump(pitching_model, 'models/pitching_model_rf.pkl')
 # Plot graphs
 plot_confusion_and_roc(y_test_b, y_pred_b, y_proba_b, "Batting Model")
 plot_confusion_and_roc(y_test_p, y_pred_p, y_proba_p, "Pitching Model")
